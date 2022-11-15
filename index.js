@@ -13,8 +13,10 @@ const gitAdd = (cwd) => execa('git', ['add', '.'], { stdio: 'inherit', cwd })
 
 const gitCommit = (cwd, msg) =>
   execa('git', ['commit', '-m', msg], { stdio: 'inherit', cwd })
+
 const gitPush = (cwd, branch = 'develop', origin = 'origin') =>
-  execa('git', ['push'], { stdio: 'inherit', cwd })
+  execa('git', ['push', origin, `HEAD:${branch}`], { stdio: 'inherit', cwd })
+
 
 const ensureSyncDir = (syncPathName, basePath) => {
 
